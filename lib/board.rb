@@ -2,8 +2,8 @@ module ConnectFour
   class Board
     attr_reader :grid
     def initialize(input = {})
-      height = input.fetch(:height, 6)
-      width = input.fetch(:width, 7)
+      height = [input.fetch(:height, 6), 4].max
+      width = [input.fetch(:width, 7), 4].max
       @grid = new_grid(height, width)
     end
 
