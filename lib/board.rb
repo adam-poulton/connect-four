@@ -43,6 +43,10 @@ module ConnectFour
     def new_grid(height, width)
       Array.new(height) { Array.new(width) { Cell.new } }
     end
+
+    def draw?
+      grid.flatten.map { |cell| cell.value }.none_empty?
+    end
   end
 end
 
