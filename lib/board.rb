@@ -65,12 +65,12 @@ module ConnectFour
         for x in (0...max_x) do
           for y in (0...max_y) do
             last_x = x + 3 * dx
-            last_y = y * 3 * dy
+            last_y = y + 3 * dy
             if 0 <= last_x && last_x < max_x && 0 <= last_y && last_y < max_y
               val = get_cell(x, y).value
-              if !val.empty?  && val == get_cell(x + dx, y + dy).value
-                              && val == get_cell(x + 2 * dx, y + 2 * dy).value
-                              && val == get_cell(x + 3 * dx, y + 3 * dy).value
+              if (!val.empty? && val == get_cell(x + dx, y + dy).value && 
+                                 val == get_cell(x + 2 * dx, y + 2 * dy).value &&
+                                 val == get_cell(x + 3 * dx, y + 3 * dy).value)
                 return true
               end
             end
@@ -79,39 +79,6 @@ module ConnectFour
       end
       return false
     end
-
-    def row_positions
-      result = []
-      grid.each do |row|
-        start = 0
-        finish = row.length + 1 - 4
-        finish.times do
-          result << row[start...start+4]
-          start += 1
-        end
-      end
-      result
-    end
-
-    def col_positions
-      result = []
-      transposed = grid.transpose
-      transposed.each do |row|
-        start = 0
-        finish = row.length + 1 - 4
-        finish.times do
-          result << row[start...start+4]
-          start += 1
-        end
-      end
-      result
-    end
-
-    def diagonals
-      result = []
-      x = y = 0
-    end
   end
 end
-puts ConnectFour::Board.new.display
 
