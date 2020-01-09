@@ -49,5 +49,11 @@ module ConnectFour
         expect(board.place(2, "B")).to be false
       end
     end
+    describe "#draw?" do
+      it "returns false on an empty board" do
+        board = Board.new
+        expect(board.draw?).to be false
+      end
+    end
   end
 end
