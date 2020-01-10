@@ -13,6 +13,8 @@ module ConnectFour
 
     def display
       result = ""
+      result << (0...grid[0].length).to_a.join(" ")
+      result << "\n"
       grid.each {|row| 
         result << row.map {|cell| 
           cell.value.empty? ? "_" : cell.value }.join(" ")
